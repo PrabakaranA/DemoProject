@@ -35,8 +35,13 @@ angular.module('jwcmarineApp')
 
   	$scope.handleCourseChange = function(item) {
   		$scope.data.courseList = $scope.data.fullCourseList[item];
-  		$scope.data.course = $scope.data.courseList[0]
+  		$scope.data.course = $scope.data.courseList[0];
+  		ajaxService.getPrerequisite().then(function(response) {
+  			console.log(response.data);
+  		})
   	}
+
+
 
 
   }]);

@@ -5,6 +5,7 @@ app.factory('ajaxService', ['$http', '$q',
 		
 		//API Endpoints:
 		var courseAPI = "https://api.myjson.com/bins/1f33nl";
+		var prerequisiteAPI = "https://api.myjson.com/bins/g38pt";
 
         var requestObj = {
             method: 'GET',
@@ -26,7 +27,14 @@ app.factory('ajaxService', ['$http', '$q',
 					};
 				var reqObjExt = angular.extend({}, requestObj, reqObj);
 				return $http(reqObjExt);
-            }
+            },
+            getPrerequisite: function (_data) {
+            	var reqObj = {
+					url: prerequisiteAPI
+					};
+				var reqObjExt = angular.extend({}, requestObj, reqObj);
+				return $http(reqObjExt);
+            },
         };
         return ajaxService;
     }]);
