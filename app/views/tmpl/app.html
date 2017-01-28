@@ -1,0 +1,15 @@
+<section ng-include="'views/tmpl/header.html'" id="header"></section>
+
+<div id="controls">
+
+  <!--aside ng-include="'views/tmpl/nav.html'" id="sidebar" ></aside>
+
+  <aside ng-include="'views/tmpl/rightbar.html'" id="rightbar"></aside -->
+
+</div>
+
+<div class="view-container" ui-view-container>
+  <section ui-view id="content" autoscroll="false"></section>
+</div>
+
+<section ng-include="'views/tmpl/footer.html'" id="footer"></section>

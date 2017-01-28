@@ -1,0 +1,14 @@
+<div class="dashboard-view" ng-init="initDashBoard()">
+    <div class="row">
+        <fieldset class="col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-disabled="data.categoryList.length < 1">
+            <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center" for="categorySelect"> Category: </label>
+            <select class="col-xs-6 col-sm-6 col-md-6 col-lg-6" name="categorySelect" ng-model="data.category" ng-change="handleCategoryChange(data.category)" ng-options="item as item for item in  data.categoryList">
+            </select>
+        </fieldset>
+        <fieldset class="col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-disabled="data.courseList.length < 1">
+            <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center" for="courseSelect"> Course: </label>
+            <select class="col-xs-6 col-sm-6 col-md-6 col-lg-6" name="course" ng-model="data.course" ng-options="item as item.name for item in  data.courseList">
+            </select>
+        </fieldset>
+    </div>
+</div>
