@@ -6,6 +6,8 @@ app.factory('ajaxService', ['$http', '$q',
 		//API Endpoints:
 		var courseAPI = "https://api.myjson.com/bins/1f33nl";
 		var prerequisiteAPI = "https://api.myjson.com/bins/g38pt";
+        var courseDetails = "https://api.myjson.com/bins/gjbf5";
+        var seatsAPI = "https://api.myjson.com/bins/17zeep";
 
         var requestObj = {
             method: 'GET',
@@ -21,20 +23,35 @@ app.factory('ajaxService', ['$http', '$q',
 
         var ajaxService = {
 
-            getCourses: function (_data) {
+            getCourses: function () {
             	var reqObj = {
 					url: courseAPI
 					};
 				var reqObjExt = angular.extend({}, requestObj, reqObj);
 				return $http(reqObjExt);
             },
-            getPrerequisite: function (_data) {
+            getPrerequisite: function () {
             	var reqObj = {
 					url: prerequisiteAPI
 					};
 				var reqObjExt = angular.extend({}, requestObj, reqObj);
 				return $http(reqObjExt);
             },
+            getCourseDetails: function () {
+                var reqObj = {
+                    url: courseDetails
+                    };
+                var reqObjExt = angular.extend({}, requestObj, reqObj);
+                return $http(reqObjExt);
+            },
+            getSeatAvailablity: function () {
+                var reqObj = {
+                    url: seatsAPI
+                    };
+                var reqObjExt = angular.extend({}, requestObj, reqObj);
+                return $http(reqObjExt);
+            },
+
         };
         return ajaxService;
     }]);

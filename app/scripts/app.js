@@ -10,9 +10,19 @@
  */
 var app = angular
   .module('jwcmarineApp', [
+    'ngAnimate',
+    'ui.bootstrap',
+    'picardy.fontawesome',
+    'ui.grid',
+    'ui.grid.resizeColumns',
+    'ui.grid.edit',
+    'ui.grid.moveColumns',
     'ui.router',
     'ui.utils',
-    'ui.select'
+    'ui.select',
+    'ui.calendar',
+    'angularMoment',
+    'ngDropdowns'
   ]);
 
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
@@ -29,9 +39,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     })
     //mail
     .state('app.register', {
-      abstract: true,
       url: '/register',
-      controller: 'AboutCtrl',
+      controller: 'RegisterCtrl',
       templateUrl: 'views/register.html'
     });
   }]);

@@ -1,0 +1,300 @@
+<div class="page page-form-wizard">
+    <!-- page header -->
+    <div class="pageheader">
+        <h2>{{page.title}} : {{page.courseTitle}}<!--span>// {{page.subtitle}}</span --></h2>
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="app.dashboard"><i class="fa fa-home"></i> {{main.title}}</a>
+                </li>
+                <li>
+                    <a ui-sref="app.forms.wizard">{{page.title}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+  
+    <!-- page content -->
+    <div class="pagecontent">
+
+
+
+    <uib-tabset class="tab-animation tab-container tab-wizard" justified="true" set-ng-animate="true" ng-init="formInit()" active="activeTabIndex">
+
+      <uib-tab >
+
+        <uib-tab-heading>
+          Personal Information
+          <span class="badge badge-default pull-right wizard-step">1</span>
+        </uib-tab-heading>
+
+        <form name="step1" role="form" novalidate class="form-validation">
+
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="fname">First Name: </label>
+              <input type="text" name="fname" id="fname" class="form-control" ng-minlength="3"  ng-model="user.fname" required>
+              <p class="help-block">
+                <span ng-show="step1.fname.$invalid && !step1.fname.$pristine">First Name is required.</span>
+                <span ng-show="step1.fname.$error.minlength">First Name is too short.</span>
+              </p>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="lname">Last Name: </label>
+              <input type="text" name="lname" id="lname" class="form-control" ng-model="user.lname" ng-minlength="3" required>
+              <p class="help-block">
+                <span ng-show="step1.lname.$invalid && !step1.lname.$pristine">Last Name is required.</span>
+                <span ng-show="step1.lname.$error.minlength">Last Name is too short.</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="form-group col-md-6">
+              <label for="password">Nationality: </label>
+              <input type="text" name="nationality" id="nationality" class="form-control" ng-model="user.nationality"  required>
+              <p class="help-block">
+                <span ng-show="step1.nationality.$invalid && !step1.nationality.$pristine">Nationality is required.</span>
+              </p>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="dob">Date of Birth: </label>
+              <input type="date" name="dob" id="dob" class="form-control" ng-model="user.dob" required>
+              <p class="help-block">
+                <span ng-show='step1.dob.$error.validator'>Date of Birth is required.</span>
+              </p>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-6 mb-0">
+              <label for="email">Email: </label>
+              <input type="email" name="email" id="email" class="form-control" ng-model="user.email" required>
+               <p class="help-block">
+                <span ng-show="step1.email.$invalid && !step1.email.$pristine">Email is required.</span>
+               </p>
+            </div>
+            <div class="form-group col-md-6 mb-0">
+              <label for="phone">Phone: </label>
+              <input type="text" name="phone" id="phone" class="form-control" ng-model="user.phone" ng-pattern="/^\d{10}$/">
+               <p class="help-block">
+                <span ng-show="step1.phone.$invalid && !step1.phone.$pristine">phone number should be of 10 digit.</span>
+               </p>
+            </div>
+          </div>
+
+          <button type="submit" ng-disabled="step1.$invalid" class="btn btn-default" ng-click="tabSwitch('step2')">Next</button>
+
+        </form>
+
+      </uib-tab>
+
+      <uib-tab  disable="step1.$invalid">
+
+        <uib-tab-heading>
+          Address
+          <span class="badge badge-default pull-right wizard-step">2</span>
+        </uib-tab-heading>
+
+        <form name="step2" role="form" novalidate>
+
+          <div class="row">
+            <div class="form-group col-md-8 mb-0">
+              <label for="street">Street: </label>
+              <input type="text" name="street" id="street" class="form-control" ng-model="user.street" placeholder="Enter street address" required>
+              <p class="help-block">
+                <span ng-show="step2.street.$invalid && !step2.street.$pristine">Street is required.</span>
+              </p>
+            </div>
+            <div class="form-group col-md-4 mb-0">
+              <label for="dnumber">Door no.: </label>
+              <input type="text" name="dnumber" id="dnumber" class="form-control" ng-model="user.dnumber" placeholder="Enter door number" required>
+              <p class="help-block">
+                <span ng-show="step2.dnumber.$invalid && !step2.dnumber.$pristine">Door number is required.</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="address2">Address Line 2: </label>
+            <input type="text" name="address2" id="address2" class="form-control" ng-model="user.address2" placeholder="Enter secondary address">
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label for="city">City: </label>
+              <input type="text" name="city" id="city" class="form-control" ng-model="user.city" placeholder="Enter city" required>
+              <p class="help-block">
+                <span ng-show="step2.city.$invalid && !step2.city.$pristine">City is required.</span>
+              </p>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="state">State: </label>
+              <input type="text" name="state" id="state" class="form-control" ng-model="user.state" placeholder="Enter state" required>
+              <p class="help-block">
+                <span ng-show="step2.state.$invalid && !step2.state.$pristine">State is required.</span>
+              </p>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="zip">Zip: </label>
+              <input type="text" name="zip" id="zip" class="form-control" ng-model="user.zip" placeholder="Enter zip" required>
+              <p class="help-block">
+                <span ng-show="step2.zip.$invalid && !step2.zip.$pristine">Zip is required.</span>
+              </p>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-default" ng-click="tabSwitch('step1')">Previous</button>
+          <button type="submit" ng-disabled="step2.$invalid" class="btn btn-default pull-right" ng-click="tabSwitch('step3')">Next</button>
+
+        </form>
+
+      </uib-tab>
+
+      <uib-tab  disable="step2.$invalid">
+
+        <uib-tab-heading>
+          Passport Info
+          <span class="badge badge-default pull-right wizard-step">3</span>
+        </uib-tab-heading>
+
+        <form name="step3" role="form" novalidate>
+
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="passport">Passport Number: </label>
+              <input type="text" name="passport" id="passport" class="form-control"  ng-model="user.passport" >
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="cdcNo">Seaman’s (CDC) Book No: </label>
+              <input type="text" name="cdcNo" id="cdcNo" class="form-control" ng-model="user.cdcNo" >
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-12">
+              <div class="checkbox">              
+                <label class="checkbox checkbox-custom">
+                  <input type="checkbox" name="validVisa" id="validVisa" ng-model="user.validVisa"><i></i> <span style="margin-left : 1em">Do have a valid Visa/Passport to stay in India?</span> 
+                </label>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="qualification">Sea Experience & Qualifications: </label>
+            <textarea class="form-control" rows="5" name="qualification" id="qualification" ng-model="user.seaQualification"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-default" ng-click="tabSwitch('step2')">Previous</button>
+          <button type="submit" ng-disabled="step3.$invalid" class="btn btn-default pull-right" ng-click="tabSwitch('step4')">Next</button>
+
+        </form>
+      </uib-tab>
+
+      <uib-tab disable="step3.$invalid">
+
+        <uib-tab-heading>
+          Disablity Info
+          <span class="badge badge-default pull-right wizard-step">4</span>
+        </uib-tab-heading>
+
+        <p class="well">JWC International Maritime Academy can offer a wide range of support to help students succeed on their course. 
+        We welcome students with disabilities and learning difficulties (including, for example, dyslexia, mobility difficulties and mental health problems).
+
+        If you consider that you may need some additional support, please complete the following questions:
+        </p>
+
+        <form name="step4" role="form" novalidate>
+
+          <div class="row">
+            <div class="form-group col-md-12">
+              <div class="checkbox">              
+                <label class="checkbox checkbox-custom">
+                  <input type="checkbox" name="disability" id="disability" ng-model="user.disability"><i></i> <span style="margin-left : 1em">Do you have any Disablity Condition? (e.g. Use a wheelchair, have dyslexia etc)</span> 
+                </label>
+                <p class="help-block">
+                  <span ng-show="step4.disability.$invalid && !step5.disability.$pristine" class="text-red">Disablity details is required.</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="qualification">please specify the nature of your condition.  This will help us to best assess your requirements.</label>
+            <textarea disable="step4.$invalid" class="form-control" rows="5" name="disabilityCondition" id="disabilityCondition" ng-model="user.disabilityCondition"></textarea>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-12">
+              <div class="checkbox">              
+                <label class="checkbox checkbox-custom">
+                  <input type="checkbox" name="alterArrangements" id="alterArrangements" ng-model="user.alterArrangements"><i></i> <span style="margin-left : 1em">Will you require any alternative arrangements to assist you at initial assessment/interview?</span> 
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-12">
+              <div>DATA PROTECTION – DATA PROTECTION ACT 1998:<p class="well">
+                JWC International Maritime Academy is registered as a Data User under the Data Protection Act 1998.  Personal data is treated in confidence and will not be disclosed to a third party except where the institute is required or permitted to do so by law or where the applicant has given consent in advance.  The personal data collected on this form will be processed and held on a database in order to manage your application.  We may use such data for any purpose connected with your studies, health and safety whilst on the premises, or for any legitimate reason.  This may include contacting you and your parent/guardian by post, email or telephone (incl SMS) from time to time in connection with your application
+
+                From time to time the college may use your details to send you information.  
+              </p></div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-default" ng-click="tabSwitch('step3')">Previous</button>
+          <button type="submit" ng-disabled="step4.$invalid" class="btn btn-default pull-right" ng-click="tabSwitch('step5')">Next</button>
+
+        </form>
+      </uib-tab>
+ 
+      <uib-tab disable="step4.$invalid">
+
+        <uib-tab-heading>
+          EULA
+          <span class="pull-right wizard-step">5</span>
+        </uib-tab-heading>
+
+        <p class="well">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?</p>
+
+        <form name="step5" role="form" novalidate>
+
+          <div class="checkbox">
+            <label class="checkbox checkbox-custom">
+              <input type="checkbox" name="agree" id="agree" ng-model="user.agree" required><i></i> I agree to the <a href class="text-info">Terms of Service</a>
+            </label>
+            <p class="help-block">
+              <span ng-show="step5.agree.$invalid && !step5.agree.$pristine" class="text-red">You must accept Terms of Service.</span>
+            </p>
+          </div>
+
+          <div class="checkbox">
+            <label class="checkbox checkbox-custom">
+              <input type="checkbox" name="newsletter" id="newsletter" ng-model="user.newsletter"><i></i> Receive newsletter</a>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-default" ng-click="tabSwitch('step4')">Previous</button>
+          <button type="submit" ng-disabled="step5.$invalid" class="btn btn-success pull-right">Finish</button>
+
+        </form>
+
+      </uib-tab>
+
+    </uib-tabset>
+
+
+
+
+  </div >
+    <!-- /page content -->
+</div>

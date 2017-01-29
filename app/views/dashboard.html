@@ -1,26 +1,63 @@
-<div class="dashboard-view" ng-init="initDashBoard()">
+<div class="dashboard-view clearfix" ng-init="initDashBoard()">
     <!--container 1 -->
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
         <!-- course details -->
         <div class="row">
             <fieldset class="col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-disabled="data.categoryList.length < 1">
-                <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center" for="categorySelect"> Category: </label>
-                <select class="col-xs-6 col-sm-6 col-md-6 col-lg-6" name="categorySelect" ng-model="data.category" ng-change="handleCategoryChange(data.category)" ng-options="item as item for item in  data.categoryList">
-                </select>
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 clearfix text-right" style="height : 3em;padding: 0.5em;">
+                    Category:
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 drop-down" dropdown-onchange="handleCategoryChange(selected)" dropdown-select="data.categoryList" dropdown-model="data.category" dropdown-item-label="name">
+                </div>
             </fieldset>
             <fieldset class="col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-disabled="data.courseList.length < 1">
-                <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center" for="courseSelect"> Course: </label>
-                <select class="col-xs-6 col-sm-6 col-md-6 col-lg-6" name="course" ng-model="data.course" ng-options="item as item.name for item in  data.courseList">
-                </select>
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 clearfix text-right" style="height : 3em;padding: 0.5em;"> Course:
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" dropdown-onchange="handleCourseChange(selected)" dropdown-select="data.courseList" dropdown-model="data.course" dropdown-item-label="name">
+                    </select>
             </fieldset>
+            </div>
+            <!-- prerequisite details -->
+            <div class="prerequisite-wrapper col-xs-10 col-sm-10 col-md-8 col-lg-8 col-xs-offset-1 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
+                <label class="prerequisite-title">Prerequisites:</label>
+                <div class="prerequisite-contents clearfix">
+                    <div ng-if="data.prerequisiteList.length > 0" ng-repeat="item in data.prerequisiteList" class="clearfix prerequisite-item">
+                        <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+                            <fieldset>
+                                <div class="onoffswitch greensea inline-block">
+                                    <input ng-disabled="{{!item.isMandatory}}" type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="{{item.cs_course_id+$index}}" ng-checked="item.isMandatory ? false : true">
+                                    <label class="onoffswitch-label" for="{{item.cs_course_id+$index}}">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10">
+                            <label>{{item.course_prerequiste}}</label>
+                        </div>
+                    </div>
+                    <div ng-if="data.prerequisiteList.length <= 0" class="text-center" style="padding:5em;">
+                        Please select a Course!!!
+                    </div>
+                </div>
+                <div style="padding:1em">
+                    <label class="checkbox checkbox-custom-alt">
+                        <input id="prerequisiteAgreeCheckbox" type="checkbox"  ng-model="data.agreePrerequisite.value" ng-change="prerequisiteCheckboxChange(selected)"><i></i> Agree
+                    </label>
+                </div>
+            </div>
         </div>
-        <!-- prerequisite details -->
-        <div class="row">
-            prerequisite
+        <!--container 2- calendar -->
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="calendar-wrapper" ui-calendar="uiConfig.calendar" ng-model="data.eventSources"></div>
+            <div class="course-details">
+                <div ng-if="data.courseDuration"><span>Course Duration : </span>{{data.courseDuration}}</div>
+                <div ng-if="data.coursePrice"><span>Course Price : </span>{{data.coursePrice}}</div>
+                <div ng-if="data.seatsAvailable"><span>No.of Seats Available : </span>{{data.seatsAvailable}}</div>
+            </div>
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-6 col-lg-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3 col-lg-offset-3">
+            <button class="btn btn-rounded btn-primary btn-md" style="width: 10em;" ng-click="onSubmit()">Submit</button>
         </div>
     </div>
-    <!--container 2- calendar -->
-    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-    calendar
-    </div>
-</div>

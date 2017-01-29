@@ -1,6 +1,95 @@
 .dashboard-view {
-	padding : 2em;
-	fieldset { 
-		padding : 1em;
-	}
+    padding: 2em;
+    //Course selection Drop down styles
+    fieldset {
+        padding: 1em;
+        color: #03345f;
+        .wrap-dd-select {
+            height: 3em;
+            width: 50%;
+        }
+    }
+    //Calendar Styles
+    .calendar-wrapper {
+    	@media (min-width: 992px) {
+    		margin-top : 4em !important;
+    	}
+        .fc-view-container {
+            background-color: white;
+        }
+    }
+    .fc .fc-toolbar .fc-left h2 {
+        font-size: 1.5em;
+    }
+    .fc-toolbar {
+        color: #03345f;
+    }
+    td.fc-day.fc-past {
+        background-color: #a7a7a7 !important
+    }
+    .fc-day {
+        &.fc-sun,
+        &.fc-tue,
+        &.fc-wed,
+        &.fc-thu,
+        &.fc-fri,
+        &.fc-sat {
+            background-color: #a7a7a7;
+        }
+    }
+    .fc-today {
+        background-color: #fcf8e3 !important;
+    }
+    .disabled-date .fc-day .fc-mon {
+        background-color: #a7a7a7;
+    }
+    .date-clicked {
+        background-color: #6889ab;
+    }
+    .fc-day:first-child > div:first-child {
+        position: relative;
+    }
+    .fc-day:first-child > div:first-child .fc-day-number {
+        position: absolute;
+        top: 50%;
+        left: 0px;
+        right: 0px;
+        text-align: center;
+        margin-top: -.5em;
+        line-height: 1em;
+    }
+    .course-details {
+        padding: 0.5em;
+        div {
+            padding: 0.5em;
+            span {
+                color: #03345f;
+            }
+        }
+    }
+    //Prerequisites Wrapper
+    .prerequisite-wrapper {
+        padding: 2em;
+        .prerequisite-title {
+            color: #03345f;
+            padding: 1em 0 1em 0;
+            font-weight: bold;
+        }
+        .prerequisite-contents {
+            border: 1px solid gray;
+            padding: 1em;
+            fieldset {
+                padding: 0px;
+            }
+            .prerequisite-item {
+                padding: 1em;
+                .onoffswitch-inner:after {
+                    background-color: red;
+                }
+            }
+        }
+        .checkbox-custom-alt > i:before {
+            content: "\e013";
+        }
+    }
 }

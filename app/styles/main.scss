@@ -1,12 +1,91 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+$fa-font-path: "/bower_components/font-awesome/fonts/";
+@import "font-awesome/scss/font-awesome";
+
+$color-primary : #03345f;
+
+
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 @import "bourbon/app/assets/stylesheets/_bourbon.scss";
+@import "font-awesome/scss/font-awesome.scss";
 // endbower
 
 @import "pages/header.scss";
 @import "pages/footer.scss";
 @import "pages/dashboard.scss";
+@import "angular-dropdowns.min.css";
+
+
+//minovate styles
+// My variables, mixins and colors
+@import "minovate/inc/mixins"; // main mixins
+@import "minovate/inc/colors"; // colors variables
+@import "minovate/inc/variables"; // other variables
+
+// Vendor
+
+//Pages
+@import "minovate/pages/global"; // global page settings
+@import "minovate/pages/tree"; // file tree settings
+@import "minovate/pages/chat"; // chat page settings
+@import "minovate/pages/mail"; // mail page settings
+@import "minovate/pages/search_results"; // search results page settings
+
+//Layouts
+@import "minovate/layouts/boxed"; // boxed layout
+@import "minovate/layouts/hz-menu"; // horizontal menu
+@import "minovate/layouts/rtl"; // rtl layout
+
+// Sections
+@import "minovate/sections/content"; // content section
+@import "minovate/sections/header"; // header section
+@import "minovate/sections/nav"; // navigation section
+@import "minovate/sections/nav-min"; // navigation sm/xs
+@import "minovate/sections/page-header"; // page header section
+@import "minovate/sections/rightbar"; // rightbar section
+@import "minovate/sections/page-loader"; // page loader
+@import "minovate/sections/add-nav"; // additional navbar under breadcrumbs
+
+// Components
+@import "minovate/components/tiles"; // tiles
+@import "minovate/components/form-elements"; // form elements
+@import "minovate/components/ui-elements"; // ui elements
+@import "minovate/components/dropdowns"; // dropdowns
+@import "minovate/components/charts"; // charts
+@import "minovate/components/buttons"; // buttons
+@import "minovate/components/icons";  // icons
+@import "minovate/components/lists"; // lists
+@import "minovate/components/media"; // media
+@import "minovate/components/thumbnails"; // thumbnails
+@import "minovate/components/typography"; // typography
+@import "minovate/components/loading-bar"; // loading bar
+@import "minovate/components/daterangepicker"; // daterangepicker
+@import "minovate/components/alerts-notifications"; // alerts and notifications
+@import "minovate/components/tabs-pills"; // tabs and pills
+@import "minovate/components/modals"; // modals
+@import "minovate/components/portlets"; // portlets
+@import "minovate/components/progress"; // progress bars
+@import "minovate/components/tbox"; // table layout
+@import "minovate/components/tree"; // file tree
+@import "minovate/components/chosen"; // chosen plugin
+@import "minovate/components/tables"; // tables
+@import "minovate/components/cards"; // two sided cards
+@import "minovate/components/carousel"; // carousel
+@import "minovate/components/widgets"; // widgets
+@import "minovate/components/streamline"; // streamline
+@import "minovate/components/maps"; // maps
+@import "minovate/components/calendar"; // calendar
+@import "minovate/components/gallery"; // gallery
+@import "minovate/components/material"; // material design
+@import "minovate/components/masonry"; // masonry
+@import "minovate/components/intro"; // intro
+
+// Shared
+@import "minovate/shared/global"; // global shared settings
+@import "minovate/shared/color-schemes"; // color schemes
+@import "minovate/shared/print"; // print css
+@import "minovate/shared/animations"; // animations
 
 
 .browsehappy {
@@ -18,6 +97,14 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 body {
   padding: 0;
+  background-repeat: no-repeat;
+ // background: -moz-linear-gradient(44deg, rgba(255,255,255,0) 0%, rgba(135,164,250,1) 100%); /* ff3.6+ */
+ // background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(255,255,255,0)), color-stop(100%, rgba(135,164,250,1))); /* safari4+,chrome */
+ // background: -webkit-linear-gradient(44deg, rgba(255,255,255,0) 0%, rgba(135,164,250,1) 100%); /* safari5.1+,chrome10+ */
+ // background: -o-linear-gradient(44deg, rgba(255,255,255,0) 0%, rgba(135,164,250,1) 100%); /* opera 11.10+ */
+ // background: -ms-linear-gradient(44deg, rgba(255,255,255,0) 0%, rgba(135,164,250,1) 100%); /* ie10+ */
+ // background: linear-gradient(46deg, rgba(255,255,255,0) 0%, rgba(135,164,250,1) 100%); /* w3c */
+ // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#87A4FA',GradientType=1 ); /* ie6-9 */
 }
 
 
