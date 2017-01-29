@@ -59,8 +59,7 @@ angular.module('jwcmarineApp')
                 var tempVar = Object.keys(response.data);
                 var tempArray = []
                 for (var i = 0; i < tempVar.length; i++) {
-                    let tempObj = { "name": tempVar[i] }
-                    tempArray.push(tempObj);
+                    tempArray.push({"name":tempVar[i]});
                 }
                 $scope.data.categoryList = tempArray;
                 $scope.data.category = $scope.data.categoryList[0];
@@ -97,7 +96,7 @@ angular.module('jwcmarineApp')
         }
 
         $scope.onSubmit = function(argument) {
-        	$state.go('app.register');
+        	$state.go('app.register',{'prerequisite' : $scope.data.prerequisiteList });
         }
 
 

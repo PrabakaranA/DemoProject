@@ -42,9 +42,16 @@
                     </div>
                 </div>
                 <div style="padding:1em">
-                    <label class="checkbox checkbox-custom-alt">
-                        <input id="prerequisiteAgreeCheckbox" type="checkbox"  ng-model="data.agreePrerequisite.value" ng-change="prerequisiteCheckboxChange(selected)"><i></i> Agree
-                    </label>
+
+                    <div class="checkbox">
+                      <label class="checkbox checkbox-custom">
+                        <input type="checkbox" name="prerequisiteAgreeCheckbox" id="prerequisiteAgreeCheckbox" ng-model="data.agreePrerequisite.value" ng-change="prerequisiteCheckboxChange(selected)" required><i></i> I agree.
+                      </label>
+                      <p class="help-block">
+                        <span ng-show="step5.agree.$invalid && !step5.agree.$pristine" class="text-red">You must accept Terms of Service.</span>
+                      </p>
+                    </div>
+
                 </div>
             </div>
         </div>

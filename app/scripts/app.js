@@ -22,7 +22,8 @@ var app = angular
     'ui.select',
     'ui.calendar',
     'angularMoment',
-    'ngDropdowns'
+    'ngDropdowns',
+    'angularFileUpload'
   ]);
 
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
@@ -41,6 +42,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     .state('app.register', {
       url: '/register',
       controller: 'RegisterCtrl',
-      templateUrl: 'views/register.html'
+      templateUrl: 'views/register.html',
+      params :{
+        'prerequisite' : []
+      }
     });
   }]);
